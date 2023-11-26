@@ -1,15 +1,15 @@
 # SQL-MariaDB_10.2-
-Triggers and Procedures
+/*Triggers and Procedures
 PROCEDIMIENTO: Ejecuta bucle para conjunto de resultados.
   1- Declaración de CURSOR para almacenar conjunto de resultado 
   2- Esctuctura read_loop: LOOP para interactuar con CURSOR y ejecutar setencia para cada fila del cursor
   3- Realizar UPDATE con por cada fila contenida en CURSOR
-  4- Implementar TRIGGER para enlazar evento UPDATE de la tabla al PROCEDURE 
+  4- Implementar TRIGGER para enlazar evento UPDATE de la tabla al PROCEDURE */
 
 /************************************************************************************************************************/
           PROCEDURE
 /************************************************************************************************************************/
-  CREATE PROCEDURE SP_ReponerStockDeposito(IN idventa INT(11), IN iddeposito INT(3))
+CREATE PROCEDURE SP_ReponerStockDeposito(IN idventa INT(11), IN iddeposito INT(3))
 BEGIN
     DECLARE finalizar INT DEFAULT FALSE; 
     DECLARE codProd CHAR(60);
@@ -35,9 +35,7 @@ BEGIN
             UPDATE stock SET stk_canactual = stk_canactual + cantVen WHERE  prd_id = codProd AND dep_id = iddeposito;
         END IF;
     END LOOP;
-    
     CLOSE cursordetalle;
-    
 END;
 
 
